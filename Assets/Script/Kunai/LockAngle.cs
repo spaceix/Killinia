@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
 public class LockAngle : MonoBehaviour
 {
-    private float distance = 10.0f; // Ä³½ºÆ® °Å¸®
+    private float distance = 10.0f; // ìºë¦­í„°ë¡œë¶€í„°ì˜ ê±°ë¦¬
     public Vector2 Angle(float angle)
     {
-        // °¢µµ¸¦ ¶óµğ¾ÈÀ¸·Î º¯È¯
+        // ì…ë ¥ë°›ì€ ê°ë„ë¥¼ ë¼ë””ì•ˆ ë‹¨ìœ„ë¡œ ë³€í™˜
         float angleRad = angle * Mathf.Deg2Rad;
 
-        // °¢µµ¿¡ µû¶ó ¹æÇâ º¤ÅÍ °è»ê
+        // ê°ë„ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë°©í–¥ ë²¡í„°ë¥¼ êµ¬í•¨ (ë‹¨ìœ„ ë²¡í„°)
         Vector2 direction = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
 
-
-        // Ãæµ¹ÀÌ ¾øÀ¸¸é ÁöÁ¤ÇÑ °¢µµ¿Í °Å¸®·Î ÇÁ¸®ÆÕ »ı¼º
+        // ë°©í–¥ ë²¡í„° * ê±°ë¦¬ë§Œí¼ í˜„ì¬ ì˜¤ë¸Œì íŠ¸ì˜ ìœ„ì¹˜ì—ì„œ ë–¨ì–´ì§„ ì¢Œí‘œë¥¼ ê³„ì‚°
         Vector2 spawnPosition = (Vector2)transform.position + direction * distance;
-        Debug.DrawLine(transform.position, spawnPosition, Color.green); // Ä³½ºÆ® ¹æÇâ°ú °Å¸®±îÁöÀÇ ¶óÀÎÀ» ±×¸³´Ï´Ù.
+
+        // Scene ë·°ì—ì„œ í˜„ì¬ ìœ„ì¹˜ì™€ spawnPosition ì‚¬ì´ë¥¼ ì´ˆë¡ìƒ‰ ì„ ìœ¼ë¡œ ê·¸ë ¤ í™•ì¸
+        Debug.DrawLine(transform.position, spawnPosition, Color.green);
+
+        // ìµœì¢… ì¢Œí‘œ ë°˜í™˜
         return spawnPosition;
     }
 }
